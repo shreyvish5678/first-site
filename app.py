@@ -26,8 +26,8 @@ def array_to_base64_image(array):
     return base64.b64encode(buffered.getvalue()).decode('utf-8')
 
 def generate_image():
-    generator = tf.keras.models.load_model('generator_dogs.h5')
-    noise = tf.random.normal(shape=(1, 128), mean=0.0, stddev=1.0)
+    generator = tf.keras.models.load_model('generator_humans.h5')
+    noise = tf.random.normal(shape=(1, 100), mean=0.0, stddev=1.0)
     generated_image = generator(noise, training=False)[0]
     generated_image = generated_image * 127.5 + 127.5
     return generated_image
